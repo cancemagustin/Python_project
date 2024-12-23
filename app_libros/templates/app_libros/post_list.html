@@ -1,14 +1,28 @@
-{% extends 'base.html' %}   
+{% extends 'Main/base.html' %}   
   
-{% block content_title %}Lista de lenguajes{% endblock content_title %}
+{% block title %}
+    Blog
+{% endblock title %}
+{% block content_title %}
+    Lista de publicaciones
+{% endblock content_title %}
 {% block content %}
 
+    <a href="{% url 'blog:post_create' %}" class="btn btn-primary mb-3">Crear publicación</a>
+
+    
     <ul class="list-group">
         {% for post in posts %}
             <a href="#" class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-between">
-                    <h5>{{post.titulo}}</h5>
-                    <small>Publicado el: {{post.fecha_publicacion}}</small>
+                    <li class="list-group-item">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5>{{ post.titulo }}</h5>
+                            <small>Publicado el: {{ post.fecha_publicacion }}</small>
+                        </div>
+                        <p class="mb-1">{{ post.contenido }}</p>
+                    </li>
+                    
                 </div>
                 
                 <p class="mb-1">{{post.contenido}}</p>
