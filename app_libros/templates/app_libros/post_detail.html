@@ -1,0 +1,30 @@
+{% extends 'Main/base.html' %}   
+  
+{% block title %}
+    Detalles
+{% endblock title %}
+{% block title_content %}
+    Detalles de la publicación
+{% endblock title_content %}
+{% block content %}
+    
+    <ul>
+        <li>Título: {{ object.titulo }}</li>
+        <li>Autor: {{ object.autor }}</li>
+        <li>Contenido: {{ object.contenido }}</li>
+        <li>Estado: {% if post.estado == "B" %}
+            <td>Borrador</td>
+            {% else %}
+                <td><strong>Publicado</strong></td>
+            {% endif %}    
+
+
+        </li>
+
+        
+    </ul>
+    <div>
+        <a href="{% url 'blog:post_list' %}">Volver</a>
+    </div>
+{% endblock content %}
+   

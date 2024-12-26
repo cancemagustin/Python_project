@@ -1,0 +1,17 @@
+{% extends 'Main/base.html' %}   
+  
+{% block title %}
+    Actualizar
+{% endblock title %}
+{% block title_content %}
+    Actualizaciones de la publicación
+{% endblock title_content %}
+{% block content %}
+    
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Actualizar</button>
+    </form>
+{% endblock content %}
+   
