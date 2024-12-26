@@ -10,7 +10,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
         <div class="container">
-          <a class="navbar-brand fw-bold text-primary" href="#">Sitio</a>
+          <a class="navbar-brand fw-bold text-primary" href="{% url 'blog:post_list' %}">Sitio</a>
           <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -22,6 +22,17 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'blog:post_list' %}">Blog</a>
               </li>
+              {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Main:editar_perfil' %}">
+
+                        {% if user.avatar.imagen %}
+                          <img src="{{user.avatar.imagen.url}}" alt="" class="rounded-circle" width="30" height="30">
+                        {% endif %}{{user.username}}
+
+                    </a>
+                </li>
+              {% endif %}
             </ul>
           </div>
         </div>
